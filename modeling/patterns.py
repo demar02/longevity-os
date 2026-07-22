@@ -121,8 +121,18 @@ class PatternDetector:
         Returns dict mapping metric_name -> pd.Series indexed by date.
         Pulls from diet_entries (daily aggregates), exercise_entries,
         body_metrics, and biomarkers.
+
+        Uses the most recent observation date as reference (not wall-clock),
+        so historical/demo datasets work correctly.
         """
-        cutoff = (datetime.utcnow() - timedelta(days=days)).date().isoformat()
+        # Find the most recent data point across all tables
+        max_date_row = pd.read_sql_query(
+            "SELECT MAX(DATE(timestamp)) AS md FROM body_metrics", self.db.conn)
+        if max_date_row.empty or max_date_row.iloc[0]["md"] is None:
+            reference_date = datetime.utcnow().date()
+        else:
+            reference_date = date.fromisoformat(max_date_row.iloc[0]["md"])
+        cutoff = (reference_date - timedelta(days=days)).isoformat()
         series = {}
 
         # --- Diet: daily aggregates ---
