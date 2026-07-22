@@ -30,4 +30,19 @@ Thumbs.db
 
 # Environment / secrets
 .env
+.env.local
 *.key
+
+# Generated plots (user-specific)
+plots/
+
+# Reports (personal data)
+reports/
+
+# Trials data
+trials/
+
+# Distribution
+dist/
+*.egg-info/
+build/

@@ -15,7 +15,8 @@ from typing import Any, Optional
 
 
 # Default database location
-DEFAULT_DB_PATH = "/Users/A.Y/Desktop/Projects/2026/longevity-os/data/taiyiyuan.db"
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_DB_PATH = str(Path(os.environ.get("TAIYIYUAN_DB", str(_PROJECT_ROOT / "data" / "taiyiyuan.db"))))
 
 # Schema file lives alongside this module
 SCHEMA_PATH = Path(__file__).parent / "schema.sql"

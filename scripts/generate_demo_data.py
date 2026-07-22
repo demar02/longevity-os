@@ -27,7 +27,7 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-PROJECT_ROOT = Path("/Users/A.Y/Desktop/Projects/2026/longevity-os")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DB_PATH = PROJECT_ROOT / "data" / "taiyiyuan.db"
 SETUP_SCRIPT = PROJECT_ROOT / "scripts" / "setup.py"
 

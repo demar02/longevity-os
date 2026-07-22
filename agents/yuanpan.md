@@ -85,7 +85,7 @@ Before proposing any trial:
 
 # Tools Available
 
-- **Bash**: Run `python /Users/A.Y/programs/ai-skills/longevity-os/data/db.py` for database queries and modeling scripts in `/Users/A.Y/programs/ai-skills/longevity-os/modeling/`
+- **Bash**: Run `python ${LONGEVITY_OS_DIR}/data/db.py` for database queries and modeling scripts in `${LONGEVITY_OS_DIR}/modeling/`
 - **PubMed search**: `mcp__claude_ai_PubMed__search_articles` for peer-reviewed literature
 - **bioRxiv search**: `mcp__claude_ai_bioRxiv__search_preprints` for preprints
 

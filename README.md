@@ -405,17 +405,42 @@ The orchestrator (Imperial Physician) pattern maps directly to OpenClaw's [multi
 
 ## Quick Start
 
+### One-Command Setup (Demo Mode)
+
+```bash
+git clone https://github.com/demar02/longevity-os.git
+cd longevity-os
+pip install -e .
+python scripts/quickstart.py
+```
+
+This will: check dependencies → initialize the DB → generate 90 days of synthetic data → produce example plots → start the dashboard.
+
+### Manual Setup
+
+```bash
+# 1. Install dependencies
+pip install -e .
+
+# 2. Initialize the database
+python scripts/setup.py
+
+# 3. (Optional) Generate demo data
+python scripts/generate_demo_data.py
+
+# 4. Start the dashboard
+python dashboard/server.py
+# Open http://localhost:8420
+```
+
 ### Claude Code
 
 ```bash
-# 1. Initialize the database
-cd ~/Desktop/Projects/2026/longevity-os
-python scripts/setup.py
-
-# 2. Start the dashboard server
-python dashboard/server.py
-
-# 3. Open http://localhost:8420
+# Natural language interface
+/longevity Had salmon and rice for lunch
+/longevity Weekly report
+/longevity How's my sleep trending?
+/longevity Propose a trial for my protein-sleep pattern
 ```
 
 The primary interface is natural language through Claude Code:
@@ -451,6 +476,62 @@ After copying skills to your OpenClaw workspace (see [OpenClaw setup](#setup-on-
 | **Trial Design** | Court Magistrate | Literature search (PubMed + bioRxiv), protocol design, power analysis |
 | **Safety Review** | Medical Censor | Independent review, literature verification, confounder identification |
 | **Reports** | Court Scribe | Daily digests, weekly reports, literature-backed recommendations |
+
+---
+
+## Plot Generation
+
+The modeling engine produces publication-quality plots from its statistical outputs:
+
+```bash
+# Weight trend with regression line + CI
+python modeling/plots.py trend --metric weight --days 90 --output trend.png
+
+# HRV anomaly detection with z-score markers
+python modeling/plots.py anomalies --metric hrv --days 90 --output anomalies.png
+
+# Power analysis curve (MDE vs sample size)
+python modeling/plots.py power --metric sleep_quality --output power.png
+
+# Forest plot of trial effect sizes
+python modeling/plots.py forest --trial_id 1 --output forest.png
+
+# Correlation heatmap (FDR-corrected)
+python modeling/plots.py heatmap --days 90 --output correlations.png
+
+# Cross-module correlation network
+python modeling/plots.py network --days 90 --output network.png
+```
+
+Or use as a Python library:
+
+```python
+from modeling.plots import plot_bsts_counterfactual, plot_trial_forest
+fig = plot_trial_forest(trial_results)  # returns matplotlib Figure
+fig.savefig("my_forest.pdf")
+```
+
+<p align="center">
+  <img src="docs/example-outputs/trend_weight.png" alt="Weight Trend" width="48%" />
+  <img src="docs/example-outputs/forest_trial.png" alt="Forest Plot" width="48%" />
+</p>
+<p align="center">
+  <img src="docs/example-outputs/power_sleep.png" alt="Power Analysis" width="48%" />
+  <img src="docs/example-outputs/anomalies_hrv.png" alt="Anomaly Detection" width="48%" />
+</p>
+
+---
+
+## Configuration
+
+| Environment Variable | Default | Purpose |
+|---------------------|---------|---------|
+| `TAIYIYUAN_DB` | `<repo>/data/taiyiyuan.db` | SQLite database path |
+| `LONGEVITY_DATA_DIR` | repo root | All data files |
+| `LONGEVITY_PLOTS_DIR` | `<repo>/plots/` | Plot output directory |
+| `USDA_API_KEY` | — | USDA FoodData Central (nutrition lookups) |
+
+Copy `.env.example` to `.env` and edit as needed. All variables are optional.
 
 ---
 

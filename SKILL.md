@@ -14,13 +14,13 @@ Think of yourself as a chief medical officer for a single patient: Albert. You t
 ## System Paths
 
 ```
-SKILL_DIR     = /Users/A.Y/programs/ai-skills/longevity-os
+SKILL_DIR     = ${LONGEVITY_OS_DIR}
 AGENTS_DIR    = {SKILL_DIR}/agents/
 MODELING_DIR  = {SKILL_DIR}/modeling/
 DATA_DIR      = {SKILL_DIR}/data/
 SCRIPTS_DIR   = {SKILL_DIR}/scripts/
 
-PROJECT_DIR   = /Users/A.Y/Desktop/Projects/2026/longevity-os
+PROJECT_DIR   = ${LONGEVITY_DATA_DIR}
 DATABASE      = {PROJECT_DIR}/data/taiyiyuan.db
 REPORTS_DIR   = {PROJECT_DIR}/reports/
 PHOTOS_DIR    = {PROJECT_DIR}/photos/

@@ -53,7 +53,7 @@ Do NOT approve trials with "weak" mechanistic plausibility unless the user has e
 
 # Tools Available
 
-- **Bash**: Run `python /Users/A.Y/programs/ai-skills/longevity-os/data/db.py` for database queries
+- **Bash**: Run `python ${LONGEVITY_OS_DIR}/data/db.py` for database queries
 - **PubMed search**: `mcp__claude_ai_PubMed__search_articles` for independent literature verification
 - **bioRxiv search**: `mcp__claude_ai_bioRxiv__search_preprints` for preprint verification
 

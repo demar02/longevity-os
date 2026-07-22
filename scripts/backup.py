@@ -23,8 +23,8 @@ from pathlib import Path
 # Constants
 # ---------------------------------------------------------------------------
 
-DB_PATH = "/Users/A.Y/Desktop/Projects/2026/longevity-os/data/taiyiyuan.db"
-BACKUP_DIR = Path("/Users/A.Y/Desktop/Projects/2026/longevity-os/data/backups")
+DB_PATH = str(Path(__file__).resolve().parent.parent / "data" / "taiyiyuan.db")
+BACKUP_DIR = Path(__file__).resolve().parent.parent / "data" / "backups"
 
 # Backup filename pattern: taiyiyuan-YYYY-MM-DD.db
 BACKUP_PATTERN = re.compile(r"^taiyiyuan-(\d{4}-\d{2}-\d{2})\.db$")

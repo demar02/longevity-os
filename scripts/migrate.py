@@ -21,10 +21,10 @@ from pathlib import Path
 # Constants
 # ---------------------------------------------------------------------------
 
-DB_PATH = "/Users/A.Y/Desktop/Projects/2026/longevity-os/data/taiyiyuan.db"
+DB_PATH = str(Path(__file__).resolve().parent.parent / "data" / "taiyiyuan.db")
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 MIGRATIONS_DIR = SKILL_ROOT / "data" / "migrations"
-BACKUP_DIR = Path("/Users/A.Y/Desktop/Projects/2026/longevity-os/data/backups")
+BACKUP_DIR = Path(__file__).resolve().parent.parent / "data" / "backups"
 
 # Pattern: 001_name.sql, 002_name.sql, etc.
 MIGRATION_PATTERN = re.compile(r"^(\d{3})_.+\.sql$")

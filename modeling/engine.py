@@ -17,6 +17,7 @@ All CLI output is JSON to stdout.
 
 import sys
 import os
+from pathlib import Path
 import json
 import argparse
 import sqlite3
@@ -33,7 +34,8 @@ from scipy import stats as scipy_stats
 _DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 sys.path.insert(0, _DATA_DIR)
 
-DB_PATH = '/Users/A.Y/Desktop/Projects/2026/longevity-os/data/taiyiyuan.db'
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DB_PATH = str(Path(os.environ.get("TAIYIYUAN_DB", str(_PROJECT_ROOT / "data" / "taiyiyuan.db"))))
 
 try:
     from db import TaiYiYuanDB

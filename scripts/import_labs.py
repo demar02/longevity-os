@@ -23,7 +23,7 @@ from pathlib import Path
 # Constants
 # ---------------------------------------------------------------------------
 
-DB_PATH = "/Users/A.Y/Desktop/Projects/2026/longevity-os/data/taiyiyuan.db"
+DB_PATH = str(Path(__file__).resolve().parent.parent / "data" / "taiyiyuan.db")
 
 # ---------------------------------------------------------------------------
 # Marker name aliases: common abbreviations -> canonical names

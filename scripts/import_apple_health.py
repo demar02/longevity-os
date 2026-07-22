@@ -24,7 +24,7 @@ import sys
 # Constants
 # ---------------------------------------------------------------------------
 
-DB_PATH = "/Users/A.Y/Desktop/Projects/2026/longevity-os/data/taiyiyuan.db"
+DB_PATH = str(Path(__file__).resolve().parent.parent / "data" / "taiyiyuan.db")
 
 # Mapping from Apple Health HKQuantityTypeIdentifier to TaiYiYuan tables/metrics
 APPLE_HEALTH_MAPPINGS = {

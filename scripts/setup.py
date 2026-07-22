@@ -21,12 +21,12 @@ from pathlib import Path
 # Constants
 # ---------------------------------------------------------------------------
 
-DB_PATH = "/Users/A.Y/Desktop/Projects/2026/longevity-os/data/taiyiyuan.db"
+DB_PATH = str(Path(__file__).resolve().parent.parent / "data" / "taiyiyuan.db")
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 MIGRATIONS_DIR = SKILL_ROOT / "data" / "migrations"
 SCHEMA_PATH = SKILL_ROOT / "data" / "schema.sql"
 
-PROJECT_ROOT = Path("/Users/A.Y/Desktop/Projects/2026/longevity-os")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 BACKUP_DIR = PROJECT_ROOT / "data" / "backups"
 
 # Directories that must exist for the project
